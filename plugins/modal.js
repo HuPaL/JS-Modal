@@ -67,11 +67,15 @@ $.modal = function(options) {
             setTimeout(() => {
                 $modal.classList.remove('close');
                 closing = false;
+                if (typeof options.onClose === 'function') {
+                    options.onClose();
+                }
             }, ANIMATION_SPEED)
         }
     }
     const listener = event => {
         if(event.target.dataset.close) {
+            console.log(event.target.dataset.close)
             modal.close();
         }
     }
